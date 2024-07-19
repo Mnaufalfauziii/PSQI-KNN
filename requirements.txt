@@ -1,0 +1,11 @@
+pandas
+pandas-datareader
+pandas-gbq
+pandas-stubs
+numpy
+sklearn-pandas
+scikit-learn
+seaborn
+flask
+imblearn
+openpyxl

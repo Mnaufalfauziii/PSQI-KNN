@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Dataset
+{% endblock %}
+
+{% block body %}
+{% include 'navbar.html' %}
+<div class="flex w-full justify-center pt-28 pb-12">
+	<div class="w-full max-w-screen-lg border rounded-lg p-3">
+		<h1 class="text-lg font-bold border-b pb-3 text-center">Dataset Kualitas Tidur - K Nearest Neighbor</h1>
+		<div class="relative overflow-x-auto">
+			{{ items | safe }}
+		</div>
+	</div>
+</div>
+{% endblock %}

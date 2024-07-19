@@ -1,0 +1,202 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Pertanyaan
+{% endblock %}
+
+{% block body %}
+{% include 'navbar.html' %}
+
+<form action="/pertanyaan/{{ id }}" method="post" id="pertanyaan"
+	class="container flex flex-col items-center mx-auto h-[87dvh] max-h-screen max-w-[720px] px-4 sm:px-0 pt-20">
+	<div class="flex-col p-6 my-8 bg-blue-100 border-2 border-black w-full rounded-2xl shadow-solid">
+		<div class="flex justify-center mb-2">
+			<h1 class="font-montserrat text-xs align-middle text-center text-gray-500">
+				PERTANYAAN {{ id-1 }}/17
+			</h1>
+		</div>
+		<div class="flex justify-center">
+			<h1 id="pertanyaan" class="font-montserrat font-bold text-xl text-center align-middle uppercase">
+				{{ pertanyaan }}
+			</h1>
+		</div>
+	</div>
+
+	<div class="w-full">
+		<div class="mx-auto items-center align-middle">
+			<div class="flex items-center w-full">
+				{% if id-1 == 1 or id-1 == 3 %}
+				<input type="number" min="1" max="24"
+					class="bg-gray-50 h-10 text-center text-gray-900 text-lg focus:ring-black focus:border-black block w-full py-2.5 border border-black rounded-xl shadow-solid"
+					placeholder="Masukkan jawaban (jam)" name="jawaban" required />
+				{% elif id-1 == 2 %}
+				<div class="flex flex-col gap-4 w-full">
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="1" type="radio" value="0" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="1" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							Kurang dari 16 menit
+						</label>
+					</div>
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="2" type="radio" value="1" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="2" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							16 – 30 menit
+						</label>
+					</div>
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="3" type="radio" value="2" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="3" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							31 – 60 menit
+						</label>
+					</div>
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="4" type="radio" value="3" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="4" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							lebih dari 60 menit
+						</label>
+					</div>
+				</div>
+				{% elif id-1 >= 4 and id-1 <= 15 %}
+				<div class="flex flex-col gap-4 w-full">
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="1" type="radio" value="0" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="1" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							Tidak pernah
+						</label>
+					</div>
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="2" type="radio" value="1" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="2" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							1x Seminggu
+						</label>
+					</div>
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="3" type="radio" value="2" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="3" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							2x Seminggu
+						</label>
+					</div>
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="4" type="radio" value="3" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="4" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							lebih dari 2x dalam seminggu
+						</label>
+					</div>
+				</div>
+				{% elif id-1 == 16 %}
+				<div class="flex flex-col gap-4 w-full">
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="1" type="radio" value="0" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="1" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							Tidak ada masalah
+						</label>
+					</div>
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="2" type="radio" value="1" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="2" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							Hanya masalah kecil
+						</label>
+					</div>
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="3" type="radio" value="2" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="3" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							Masalah sedang
+						</label>
+					</div>
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="4" type="radio" value="3" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="4" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							Masalah besar
+						</label>
+					</div>
+				</div>
+				{% elif id-1 == 17 %}
+				<div class="flex flex-col gap-4 w-full">
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="1" type="radio" value="0" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="1" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							Sangat baik
+						</label>
+					</div>
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="2" type="radio" value="1" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="2" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							Cukup baik
+						</label>
+					</div>
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="3" type="radio" value="2" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="3" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							Cukup Buruk
+						</label>
+					</div>
+					<div
+						class="flex items-center justify-center px-4 py-3 border-2 border-black rounded-xl shadow-solid hover:bg-blue-50">
+						<input id="4" type="radio" value="3" name="jawaban"
+							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" required>
+						<label for="4" class="w-full ps-3 font-medium text-gray-900 mb-0">
+							Sangat Buruk
+						</label>
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	<button type="submit"
+		class="flex justify-center p-2.5 my-8 bg-blue-100 hover:bg-blue-200 border-2 border-black w-full rounded-xl shadow-solid">
+		Selanjutnya -&gt;
+	</button>
+
+	<div class="text-xs">{{ jawaban }}</div>
+	<div class="text-xs">Jumlah Pertanyaan: {{ jumlah }}</div>
+</form>
+{% if not pred %}
+<h6></h6>
+{% else %}
+<div class="container mt-5">
+	<div class="card mb-5">
+		<h5 class="card-header">Hasil</h5>
+		<div class="card-body">
+			<h6 class="card-title">Indikator</h6>
+			{{ inputan | safe }}
+			<h5 class="card-title py-4">Hasilnya rekomendasinya adalah <span class="text-primary">{{ pred }}</span></h5>
+		</div>
+	</div>
+</div>
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Pittsburgh Sleep Quality Index
+{% endblock %}
+
+{% block body %}
+{% include 'navbar.html' %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}<br>
+<div class="absolute left-4 top-4 alert container alert-danger alert-dismissible fade show w-fit" role="alert">
+  <strong>{{message}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<section
+  class="h-[100dvh] flex items-center justify-center w-full bg-center bg-no-repeat bg-cover bg-[url({{url_for('static', filename='images/sleep.jpg')}})] bg-gray-300 bg-blend-multiply">
+  <div class="flex flex-col w-full max-w-screen-xl">
+    <h1 class="mb-3 text-4xl font-extrabold text-white md:text-5xl lg:text-6xl">
+      Pittsburgh Sleep Quality Index</h1>
+    <p class="mb-8 text-xl font-normal text-white">website untuk memprediksi kualitas tidur dewasa muda
+      dengan aturan PSQI versi bahasa indonesia</p>
+    <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0">
+      <a href="/pertanyaan/1"
+        class="inline-flex justify-center items-center py-2 px-4 text-base font-medium text-center text-black hover:text-gray-600 rounded-lg bg-gray-100 hover:no-underline">
+        <svg class="fill-black mr-2" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+          <path
+            d="M240-160q-33 0-56.5-23.5T160-240q0-33 23.5-56.5T240-320q33 0 56.5 23.5T320-240q0 33-23.5 56.5T240-160Zm0-240q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm0-240q-33 0-56.5-23.5T160-720q0-33 23.5-56.5T240-800q33 0 56.5 23.5T320-720q0 33-23.5 56.5T240-640Zm240 0q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Zm240 0q-33 0-56.5-23.5T640-720q0-33 23.5-56.5T720-800q33 0 56.5 23.5T800-720q0 33-23.5 56.5T720-640ZM480-400q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm40 240v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q8 9 12.5 20t4.5 22q0 11-4 22.5T863-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+        isi questionnaire
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}
