@@ -1,5 +1,7 @@
 # KONFIGURASI FLASK PYTHON
 from flask import Flask, render_template, request, redirect, flash, session
+from datetime import datetime
+
 
 # LIBRARY PYTHON
 import pandas as pd
@@ -157,7 +159,26 @@ def tanya(id):
         session['jawaban'] = {}
 
     if request.method == 'POST':
-        session['jawaban'][str(int(id)-1)] = request.form['jawaban']
+        if int(id)-1 == 1 or int(id)-1 == 3:
+            # Mengubah string menjadi objek datetime
+            waktu_awal = datetime.strptime(request.form['waktu_awal'], "%H:%M")
+            waktu_selesai = datetime.strptime(request.form['waktu_selesai'], "%H:%M")
+
+            # Mencari selisih waktu
+            selisih = waktu_selesai - waktu_awal
+
+            # Menghitung total menit dari selisih
+            total_menit = selisih.seconds // 60
+
+            # Menghitung jam dan menit dari total menit
+            jam = total_menit // 60
+            menit = total_menit % 60
+
+
+
+            session['jawaban'][str(int(id)-1)] = float(jam) + float(((menit/100)/60)*100)
+        else:
+            session['jawaban'][str(int(id)-1)] = request.form['jawaban']
         session.modified = True
         return redirect('/pertanyaan/' + str(id))
     
